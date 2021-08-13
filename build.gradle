@@ -31,10 +31,15 @@ jar {
     manifest {
         attributes "Main-Class": "com.scaler.springsockets1.SpringSockets1Application"
     }
-    from {
-        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
-    }
-    exclude "**/META-INF/**/*", "module-info.class"
+//    from {
+//        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+//    }
+//    exclude (
+//            "**/META-INF/**/*.txt",
+//            "**/META-INF/**/*.json",
+//            "**/META-INF/**/*.properties",
+//            "module-info.class"
+//    )
 }
 
 test {
