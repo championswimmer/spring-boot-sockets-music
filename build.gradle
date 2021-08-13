@@ -26,12 +26,15 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
 jar {
     manifest {
-        attributes 'Main-Class': 'SpringSockets1Application'
+        attributes "Main-Class": "com.scaler.SpringSockets1Application"
     }
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+    exclude "**/META-INF/**/*", "module-info.class"
 }
 
 test {
