@@ -5,6 +5,7 @@ plugins {
     id "io.freefair.lombok" version "6.0.0-m2"
 }
 
+bootJarMainClassName = 'SpringSockets1Application'
 group = 'com.scaler'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -26,13 +27,12 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
-
 jar {
     manifest {
-        attributes(
-                "Main-Class": "com.scaler.springsockets1.SpringSockets1Application"
-        )
+        attributes 'Main-Class': 'SpringSockets1Application'
     }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
 }
 
 test {
