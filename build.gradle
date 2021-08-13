@@ -5,7 +5,6 @@ plugins {
     id "io.freefair.lombok" version "6.0.0-m2"
 }
 
-bootJarMainClassName = 'SpringSockets1Application'
 group = 'com.scaler'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
